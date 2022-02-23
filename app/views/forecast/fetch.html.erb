@@ -1,0 +1,86 @@
+<%= form_tag(fetch_forecast_index_path, method: :get, class:"form-horizontal", remote: true) do %>
+  <h2> Current & Forecast Temperatures </h2>
+  <div class="form-group">
+    <div class="col-sm-6">
+      <%= label_tag(:address_1, "Address 1", class:"col-sm-5 control-label") %>
+      <%= text_field_tag :address_1, nil, {class:"form-control", onblur:'validateFields()', id:'inputTicketNumber'} %>
+    </div>
+
+    <div class="col-sm-6">
+      <%= label_tag(:address_2, "Address 2", class:"col-sm-5 control-label") %>
+      <%= text_field_tag :address_2, nil, {class:"form-control", onblur:'validateFields()', id:'inputTicketNumber'} %>
+    </div>
+
+    <div class="col-sm-6">
+      <%= label_tag(:city, "City", class:"col-sm-5 control-label") %>
+      <%= text_field_tag :city, nil, {class:"form-control", onblur:'validateFields()', id:'inputTicketNumber'} %>
+    </div>
+
+    <div class="col-sm-6">
+      <%= label_tag(:state, "State", class:"col-sm-5 control-label") %>
+      <%= text_field_tag :state, nil, {class:"form-control", onblur:'validateFields()', id:'inputTicketNumber'} %>
+    </div>
+
+    <div class="col-sm-6">
+      <%= label_tag(:country, "Country", class:"col-sm-5 control-label") %>
+      <%= text_field_tag :country, nil, {class:"form-control", onblur:'validateFields()', id:'inputTicketNumber'} %>
+    </div>
+
+    <div class="col-sm-6">
+      <%= label_tag(:zipcode, "Zipcode", class:"col-sm-5 control-label") %>
+      <%= text_field_tag :zipcode, nil, {class:"form-control", onblur:'validateFields()', id:'inputTicketNumber'} %>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div class="form-group">
+    <div class="row">
+      <%= submit_tag "Get Forecast", class:'btn btn-primary', id:'forecast' %>
+    </div>
+    <p>Enter zipcode and/or a combination of city/state/country</p>
+  </div>
+<%end%>
+<br />
+<br />
+<% if @weather_data %>
+
+  <table class="table  table-striped">
+	<thead>
+	<tr>
+	  <th style="padding: 0 20px 0 0;">Zipcode</th>
+	  <th style="padding: 0 20px 0 0;">City</th>
+	  <th style="padding: 0 20px 0 0;">Date</th>
+	  <th style="padding: 0 20px 0 0;">Current_Temperature</th>
+	  <th style="padding: 0 20px 0 0;">Max_Temperature</th>
+	  <th style="padding: 0 20px 0 0;">Min_Temperature</th>
+	  <th style="padding: 0 20px 0 0;">Cached_Value</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	<tr>
+	  <td style="text-align: center; padding: 0 20px 0 0;">
+		<%= @zipcode %>
+	  </td>
+	  <td style="text-align: center; padding: 0 20px 0 0;">
+		<%= @weather_data.name %>
+	  </td>
+	  <td style="text-align: center; padding: 0 20px 0 0;">
+		<%= @weather_data.dt %>
+	  </td>
+	  <td style="text-align: center; padding: 0 20px 0 0;">
+		<%= @weather_data.main.temp_f %>
+	  </td>
+	  <td style="text-align: center; padding: 0 20px 0 0;">
+		<%= @weather_data.main.temp_max_f %>
+	  </td>
+	  <td style="text-align: center; padding: 0 20px 0 0;">
+		<%= @weather_data.main.temp_min_f %>
+	  </td>
+	  <td style="text-align: center; padding: 0 20px 0 0;">
+		<%= @cached_value ? "Y" : "N" %>
+	  </td>
+	</tr>
+	</tbody>
+  </table>
+<%end%>
