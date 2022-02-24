@@ -1,41 +1,41 @@
-<%= form_tag(fetch_forecast_index_path, method: :get, class:"form-horizontal", remote: true) do %>
+<%= form_tag(fetch_forecast_index_path, method: :get, remote: true) do %>
   <h2> Current & Forecast Temperatures </h2>
-  <div class="form-group">
-    <div class="col-sm-6">
-      <%= label_tag(:address_1, "Address 1", class:"col-sm-5 control-label") %>
-      <%= text_field_tag :address_1, nil, {class:"form-control", onblur:'validateFields()', id:'inputTicketNumber'} %>
+  <div>
+    <div>
+      <%= label_tag(:address_1, "Address 1") %>
+      <%= text_field_tag :address_1 %>
     </div>
 
-    <div class="col-sm-6">
-      <%= label_tag(:address_2, "Address 2", class:"col-sm-5 control-label") %>
-      <%= text_field_tag :address_2, nil, {class:"form-control", onblur:'validateFields()', id:'inputTicketNumber'} %>
+    <div>
+      <%= label_tag(:address_2, "Address 2") %>
+      <%= text_field_tag :address_2 %>
     </div>
 
-    <div class="col-sm-6">
-      <%= label_tag(:city, "City", class:"col-sm-5 control-label") %>
-      <%= text_field_tag :city, nil, {class:"form-control", onblur:'validateFields()', id:'inputTicketNumber'} %>
+    <div>
+      <%= label_tag(:city, "City") %>
+      <%= text_field_tag :city %>
     </div>
 
-    <div class="col-sm-6">
-      <%= label_tag(:state, "State", class:"col-sm-5 control-label") %>
-      <%= text_field_tag :state, nil, {class:"form-control", onblur:'validateFields()', id:'inputTicketNumber'} %>
+    <div>
+      <%= label_tag(:state, "State") %>
+      <%= text_field_tag :state %>
     </div>
 
-    <div class="col-sm-6">
-      <%= label_tag(:country, "Country", class:"col-sm-5 control-label") %>
-      <%= text_field_tag :country, nil, {class:"form-control", onblur:'validateFields()', id:'inputTicketNumber'} %>
+    <div>
+      <%= label_tag(:country, "Country") %>
+      <%= text_field_tag :country %>
     </div>
 
-    <div class="col-sm-6">
-      <%= label_tag(:zipcode, "Zipcode", class:"col-sm-5 control-label") %>
-      <%= text_field_tag :zipcode, nil, {class:"form-control", onblur:'validateFields()', id:'inputTicketNumber'} %>
+    <div>
+      <%= label_tag(:zipcode, "Zipcode") %>
+      <%= text_field_tag :zipcode %>
     </div>
   </div>
   <br />
   <br />
-  <div class="form-group">
-    <div class="row">
-      <%= submit_tag "Get Forecast", class:'btn btn-primary', id:'forecast' %>
+  <div>
+    <div>
+      <%= submit_tag "Get Forecast", id:'forecast' %>
     </div>
     <p>Enter zipcode and/or a combination of city/state/country</p>
   </div>
@@ -44,7 +44,7 @@
 <br />
 <% if @weather_data %>
 
-  <table class="table  table-striped">
+  <table>
 	<thead>
 	<tr>
 	  <th style="padding: 0 20px 0 0;">Zipcode</th>
